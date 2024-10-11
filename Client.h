@@ -48,20 +48,4 @@ public:
     }
 };
 
-#endif
-
-        }
-
-        if (connect(sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0) {
-            cout << "Connection failed" << endl;
-            return;
-        }
-
-        send(sock, task.c_str(), task.length(), 0);
-        cout << "Task submitted: " << task << endl;
-
-        close(sock);
-    }
-};
-
-#endif
+#endif // CLIENT_H
