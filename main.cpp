@@ -1,6 +1,7 @@
 #include "Client.h"
 #include "Server.h"
 #include "Worker.h"
+#include <cstdlib>
 
 int main() {
     Server server;
@@ -9,9 +10,16 @@ int main() {
     thread serverThread(&Server::start, &server);
     serverThread.detach();
 
-    client.submitTask("Task 1");
-    client.submitTask("Task 2");
-    client.submitTask("Task 3");
+    cout << "Enter number of tasks: ";
+    int numTasks;
+    cin >> numTasks;
+
+    for (int i = 0; i < numTasks; ++i) {
+        string task;
+        cout << "Enter task description: ";
+        cin >> task;
+        client.submitTask(task);
+    }
 
     this_thread::sleep_for(chrono::seconds(20));
 
