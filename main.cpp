@@ -1,10 +1,14 @@
+// main.cpp
 #include "Client.h"
 #include "Server.h"
-#include "Worker.h"
 #include <cstdlib>
+#include <thread>
+#include <chrono>
+#include <iostream>
+
+using namespace std;
 
 int main() {
-    // Initialize server and client
     Server server;
     Client client;
 
@@ -12,12 +16,10 @@ int main() {
     thread serverThread(&Server::start, &server);
     serverThread.detach();
 
-    // Input number of tasks to submit
     cout << "Enter number of tasks: ";
     int numTasks;
     cin >> numTasks;
 
-    // Submit multiple tasks with priorities
     for (int i = 0; i < numTasks; ++i) {
         string task;
         int priority;
@@ -28,8 +30,8 @@ int main() {
         client.submitTask(task, priority);
     }
 
-    // Give time for tasks to process
-    this_thread::sleep_for(chrono::seconds(30));
+    // Allow some time for the server to process tasks before the program exits
+    this_thread::sleep_for(chrono::seconds(20));
 
     return 0;
 }
