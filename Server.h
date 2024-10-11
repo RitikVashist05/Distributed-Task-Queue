@@ -2,14 +2,14 @@
 #define SERVER_H
 
 #include <iostream>
-#include <queue>       // For priority_queue
-#include <map>         // For map (worker availability)
-#include <thread>      // For multithreading
-#include <vector>      // For managing multiple tasks/workers
-#include <unistd.h>    // For sleep functionality
+#include <queue>
+#include <map>
+#include <thread>
+#include <vector>
+#include <unistd.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
-#include <mutex>       // For thread-safe access to shared resources
+#include <mutex>
 
 using namespace std;
 
@@ -95,9 +95,12 @@ public:
             {
                 lock_guard<mutex> lock(queueMutex);
                 taskQueue.push({priority, task});
+                cout << "Task received: " << task << " with priority " << priority << endl;
             }
 
-            cout << "Task received: " << task << " with priority " << priority << endl;
+            // Debugging output
+            cout << "Task added to queue. Queue size is now: " << taskQueue.size() << endl;
+
             close(new_socket);
         }
     }
