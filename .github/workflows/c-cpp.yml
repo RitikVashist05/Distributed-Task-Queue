@@ -1,0 +1,16 @@
+name: C++ CI Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install GCC
+      run: sudo apt-get install g++
+    - name: Build with g++
+      run: g++ -pthread main.cpp -o task_system
+    - name: Run the Task System
+      run: ./task_system
