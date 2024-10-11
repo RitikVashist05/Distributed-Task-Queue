@@ -1,4 +1,4 @@
-name: C++ CI Build
+name: C++ CI Build and Test
 
 on: [push, pull_request]
 
@@ -10,7 +10,19 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install GCC
       run: sudo apt-get install g++
+    
     - name: Build with g++
       run: g++ -pthread main.cpp -o task_system
+
     - name: Run the Task System
-      run: ./task_system
+      run: |
+        echo "Running the task system"
+        ./task_system <<EOF
+        3
+        Deploy Server
+        0
+        Compile Report
+        1
+        Send Email
+        2
+        EOF
