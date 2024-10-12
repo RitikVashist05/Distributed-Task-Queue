@@ -1,4 +1,4 @@
-# Distributed Task Queue System with Priority
+# Distributed Task Queue 
 
 ## Project Overview
 
@@ -13,7 +13,7 @@ This project implements a Distributed Task Queue System that allows clients to s
 ## Project Structure
 
 ```
-/DistributedTaskQueueSystemWithPriority
+/DistributedTaskQueueSystem
 │
 ├── /src
 │   ├── Worker.h         # Header file for Worker class
