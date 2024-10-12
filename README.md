@@ -49,17 +49,17 @@ This project implements a Distributed Task Queue System that allows clients to s
 
 2. Compile the code using the following command:
    ```bash
-   g++ src/*.cpp -o DistributedTaskQueueSystem -pthread
+   g++ src/*.cpp -o DistributedTaskQueue -pthread
    ```
 
 3. Run the server and client in separate terminal windows:
    - Start the server:
      ```bash
-     ./DistributedTaskQueueSystem server
+     ./DistributedTaskQueue server
      ```
    - Start the client:
      ```bash
-     ./DistributedTaskQueueSystem client "Task description" priority
+     ./DistributedTaskQueue client "Task description" priority
      ```
 
 ## Usage
